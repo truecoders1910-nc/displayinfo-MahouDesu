@@ -50,7 +50,13 @@ namespace DisplayInfo
                 Console.ResetColor();
                 Console.WriteLine($"and your favorite animal is a {favoriteAnimal}.");
             }
-            
+            else
+            {
+                Console.WriteLine($"From the provided data you have sent me your name is {firstName} {lastName}.")
+                Console.WriteLine($"Your favorite number is {favoriteNumber}.");
+
+                Console.WriteLine($"and your favorite animal is a {favoriteAnimal}.");
+            }
         }
     }
 }
