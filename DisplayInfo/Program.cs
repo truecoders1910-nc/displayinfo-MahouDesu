@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace DisplayInfo
 {
@@ -8,9 +9,10 @@ namespace DisplayInfo
         {
             string firstName;
             string lastName;
-            string favoriteNumber;
+            string favoriteNumber = "";
             int favNumberValue;
             string favoriteAnimal;
+            bool valid = false;
 
             // Get first and last name from user input
             Console.WriteLine("Please input your First Name");
@@ -22,10 +24,21 @@ namespace DisplayInfo
             Console.Clear();
 
             // Get their favorite number
-            Console.WriteLine("Please input your Favorite Number");
-            favoriteNumber = Console.ReadLine();
+            while (!valid)
+            {
+                Console.WriteLine("Please input your Favorite Number");
+                favoriteNumber = Console.ReadLine();
+                valid = !string.IsNullOrWhiteSpace(favoriteNumber) &&
+                        favoriteNumber.All(letter => letter >= '0' && letter <= '9');
+
+                if (!valid)
+                {
+                    Console.WriteLine("Please input a number.");
+                }
+            }
             favNumberValue = Convert.ToInt32(favoriteNumber);
             Console.Clear();
+
             // Get their favorite animal
             Console.WriteLine("Please input your Favorite Animal");
             favoriteAnimal = Console.ReadLine();
